@@ -12,11 +12,7 @@ public class asteroids : MonoBehaviour
 	}
 	void OnTriggerEnter(Collider other) 
 	{
-		if (other.tag == "Laser")
-		{
-			Destroy(other.gameObject);
-			Destroy(gameObject);
-
-		}
+		Destroy(other.gameObject);
+		Destroy(gameObject);
 	}
 }
