@@ -19,7 +19,10 @@ public class asteroids : MonoBehaviour
 	}
 	void OnTriggerEnter(Collider other) 
 	{
-		Destroy(other.gameObject);
-		Destroy(gameObject);
+		/*if (other.tag == "Player")
+		{
+			Destroy(other.gameObject);
+			Destroy(gameObject);
+		}*/
 	}
 }

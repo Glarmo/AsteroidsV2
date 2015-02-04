@@ -42,6 +42,7 @@ public class playerMovement : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 			Destroy(gameObject);
+			gameController.playerDead = true;
 		}
 	}
 }

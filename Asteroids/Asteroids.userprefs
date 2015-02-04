@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_scripts/gameController.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\playerMovement.cs">
     <Files>
-      <File FileName="Assets/_scripts/asteroids.cs" Line="14" Column="2" />
-      <File FileName="Assets/_scripts/gameController.cs" Line="18" Column="50" />
+      <File FileName="Assets\_scripts\gameController.cs" Line="29" Column="80" />
+      <File FileName="Assets\_scripts\asteroids.cs" Line="26" Column="6" />
+      <File FileName="Assets\_scripts\playerMovement.cs" Line="45" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
