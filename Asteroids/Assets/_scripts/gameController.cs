@@ -16,16 +16,42 @@ public class gameController : MonoBehaviour
 	public Vector3 rightSpawnValues;
 	public Vector3 leftSpawnValues;
 	public Vector3 bottomSpawnValues;
-	
+
+	private float timeSurvived;
+	private int timeSec;
+	private int timeMin;
+	private int timeOfDeathMin;
+	private int timeOfDeathSec;
+	private int currentWave;
+
 	void Start ()
 	{
 		StartCoroutine (spawnEnemyStraight (hazard));
 	}
 
+	void Update ()
+	{
+		if (!playerDead)
+		{
+			timeSurvived += Time.deltaTime;
+			timeSec = (int)timeSurvived;
+
+			if (timeSec > 60)
+			{
+				timeMin++;
+				timeSec = 0;
+			}
+		}
+	}
 	void OnGUI ()
 	{
+		GUI.Label (new Rect (20, 20, 30, 20), "" + timeMin + ":" + timeSec);
+		GUI.Label (new Rect (20, 40, 100, 20), "WAVE: " + currentWave);
 		if (playerDead == true)
 		{
+			timeOfDeathMin = timeMin;
+			timeOfDeathSec = timeSec;
+			GUI.Label (new Rect (Screen.width/2 - 100, Screen.height/2 - 40, 180, 20), "YOU SURVIVED FOR: " + timeOfDeathMin + ":" + timeOfDeathSec);
 			if (GUI.Button (new Rect (Screen.width/2 - 50, Screen.height/2 - 10, 100, 50), "RETRY"))
 			{
 				Application.LoadLevel ("level1");
@@ -42,8 +68,7 @@ public class gameController : MonoBehaviour
 			for (int i = 0; i < hazardCount; i++)
 			{
 				GameObject enemyInstance;
-				int whereSpawn = Random.Range (1, 4);
-
+				int whereSpawn = Random.Range (1, 5);
 				if (whereSpawn == 1)		// spawns top
 				{
 					Vector3 spawnPosition = new Vector3 (Random.Range (-topSpawnValues.x, topSpawnValues.x), topSpawnValues.y, topSpawnValues.z);
