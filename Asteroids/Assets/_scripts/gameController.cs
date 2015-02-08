@@ -101,6 +101,7 @@ public class gameController : MonoBehaviour
 				yield return new WaitForSeconds (spawnWait);
 			}
 			yield return new WaitForSeconds (waveWait);
+			currentWave++;
 			hazardCount += 5;
 			spawnWait -= 0.1f;
 			if (spawnWait == 0.1f)

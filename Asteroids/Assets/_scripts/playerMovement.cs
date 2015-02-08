@@ -3,8 +3,10 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour 
 {
+	public GameObject bullet;
+
 	Vector3 dir = Vector3.zero;
-	int rotationSpeed = 20;
+	int rotationSpeed = 10;
 	int speed = 2;
 	
 	void Update () 
@@ -34,10 +36,20 @@ public class playerMovement : MonoBehaviour
 		Vector3 yPos = transform.position;
 		yPos.y = 0;
 		transform.position = yPos;
+
+		// shoots laser
+		if (Input.GetMouseButtonDown(0))
+		{
+			Vector3 playerPos = transform.position;
+			Vector3 playerRotation = transform.rotation.eulerAngles;
+			playerRotation = new Vector3 (playerRotation.x, playerRotation.y + 90, playerRotation.z);
+			Instantiate(bullet, playerPos, Quaternion.Euler(playerRotation));
+		}
 	}
 
 	void OnTriggerEnter(Collider other) 
 	{
+		// destroys ship if it hits a hazard
 		if (other.tag == "Hazard")
 		{
 			Destroy(other.gameObject);
