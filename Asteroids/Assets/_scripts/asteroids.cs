@@ -12,7 +12,10 @@ public class asteroids : MonoBehaviour
 
 	void Start ()
 	{
+		// sets the rotate speed to random value
 		rotateSpeed = Random.Range (2f, 5f);
+
+		// selects a random skin of 3
 		int skinSelect = Random.Range (1, 4);
 		if (skinSelect == 1)
 		{
@@ -29,7 +32,13 @@ public class asteroids : MonoBehaviour
 	}
 	void Update ()
 	{
-		transform.Rotate(0,rotateSpeed,0);
+		// rotates object as long as game is not paused
+		if (!gameController.paused)
+		{
+			transform.Rotate(0,rotateSpeed,0);
+		}
+
+		// stops object from moving in y plane
 		Vector3 Pos = transform.position;
 		Pos.y = 0;
 		transform.position = Pos;

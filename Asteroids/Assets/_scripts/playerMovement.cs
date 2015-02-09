@@ -11,23 +11,25 @@ public class playerMovement : MonoBehaviour
 	
 	void Update () 
 	{
-		// moves the ship
-		transform.Translate(Input.acceleration.x * speed, 0, Input.acceleration.y * speed, Space.World);
+		if (!gameController.paused)
+		{
+			// moves the ship
+			transform.Translate(Input.acceleration.x * speed, 0, Input.acceleration.y * speed, Space.World);
 
-		// rotates the ship
-		dir.x = -Input.acceleration.y;
-		dir.z = Input.acceleration.x;
+			// rotates the ship
+			dir.x = -Input.acceleration.y;
+			dir.z = Input.acceleration.x;
 
-		if (dir != Vector3.zero) {
-			transform.rotation = Quaternion.Slerp(
-				transform.rotation,
-				Quaternion.LookRotation(dir),
-				Time.deltaTime * rotationSpeed
-				);
+			if (dir != Vector3.zero) {
+				transform.rotation = Quaternion.Slerp(
+					transform.rotation,
+					Quaternion.LookRotation(dir),
+					Time.deltaTime * rotationSpeed
+					);
+			}
+			
+			transform.Rotate(Vector3.forward * Input.acceleration.y * 5.0f);
 		}
-		
-		transform.Rotate(Vector3.forward*Input.acceleration.y*5.0f);
-
 		// limits the ship to sceen space
 		Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
 		pos.x = Mathf.Clamp01 (pos.x);
@@ -40,10 +42,13 @@ public class playerMovement : MonoBehaviour
 		// shoots laser
 		if (Input.GetMouseButtonDown(0))
 		{
-			Vector3 playerPos = transform.position;
-			Vector3 playerRotation = transform.rotation.eulerAngles;
-			playerRotation = new Vector3 (playerRotation.x, playerRotation.y + 90, playerRotation.z);
-			Instantiate(bullet, playerPos, Quaternion.Euler(playerRotation));
+			if (!gameController.paused)
+			{
+				Vector3 playerPos = transform.position;
+				Vector3 playerRotation = transform.rotation.eulerAngles;
+				playerRotation = new Vector3 (playerRotation.x, playerRotation.y + 90, playerRotation.z);
+				Instantiate(bullet, playerPos, Quaternion.Euler(playerRotation));
+			}
 		}
 	}
 

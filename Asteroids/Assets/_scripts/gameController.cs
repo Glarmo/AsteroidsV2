@@ -4,6 +4,7 @@ using System.Collections;
 public class gameController : MonoBehaviour 
 {
 	public static bool playerDead;
+	public static bool paused;
 
 	public int hazardCount;
 	public float spawnWait;
@@ -16,7 +17,7 @@ public class gameController : MonoBehaviour
 	public Vector3 rightSpawnValues;
 	public Vector3 leftSpawnValues;
 	public Vector3 bottomSpawnValues;
-
+	
 	private float timeSurvived;
 	private int timeSec;
 	private int timeMin;
@@ -45,8 +46,11 @@ public class gameController : MonoBehaviour
 	}
 	void OnGUI ()
 	{
+		// displays time + wave counter
 		GUI.Label (new Rect (20, 20, 30, 20), "" + timeMin + ":" + timeSec);
 		GUI.Label (new Rect (20, 40, 100, 20), "WAVE: " + currentWave);
+
+		// displays retry + how long player survived
 		if (playerDead == true)
 		{
 			timeOfDeathMin = timeMin;
@@ -56,6 +60,21 @@ public class gameController : MonoBehaviour
 			{
 				Application.LoadLevel ("level1");
 				playerDead = false;
+			}
+		}
+
+		// displays pause button
+		paused = GUI.Toggle (new Rect (20, Screen.height - 20, 40, 40), paused, "");
+		if (paused == true)
+		{
+			if (Time.timeScale == 0)
+			{
+				Time.timeScale = 1;
+			}
+			else
+			{
+				GUI.Label (new Rect (Screen.width/2 - 50, Screen.height/2 - 10, 100, 50), "PAUSED");
+				Time.timeScale = 0;
 			}
 		}
 	}

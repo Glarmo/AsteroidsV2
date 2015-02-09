@@ -11,7 +11,6 @@ public class bullets : MonoBehaviour
 
 	void OnTriggerEnter(Collider other) 
 	{
-		print ("hit" + other);
 		if (other.tag == "Boundary")
 		{
 			Destroy(gameObject);
