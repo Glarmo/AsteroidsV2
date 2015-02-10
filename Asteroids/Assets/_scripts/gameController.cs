@@ -12,6 +12,7 @@ public class gameController : MonoBehaviour
 	public float waveWait;
 
 	public GameObject hazard;
+	public GUISkin pauseSkin;
 
 	public Vector3 topSpawnValues;
 	public Vector3 rightSpawnValues;
@@ -64,7 +65,8 @@ public class gameController : MonoBehaviour
 		}
 
 		// displays pause button
-		paused = GUI.Toggle (new Rect (20, Screen.height - 20, 40, 40), paused, "");
+		GUI.skin = pauseSkin;
+		paused = GUI.Toggle (new Rect (10, Screen.height - 50, 40, 40), paused, "");
 		if (paused == true)
 		{
 			if (Time.timeScale == 0)
