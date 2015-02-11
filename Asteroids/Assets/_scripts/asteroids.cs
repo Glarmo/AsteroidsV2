@@ -33,7 +33,7 @@ public class asteroids : MonoBehaviour
 	void Update ()
 	{
 		// rotates object as long as game is not paused
-		if (!gameController.paused)
+		if (!GUIScript.paused)
 		{
 			transform.Rotate(0,rotateSpeed,0);
 		}

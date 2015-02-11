@@ -3,15 +3,13 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour 
 {
-	public GameObject bullet;
-
 	Vector3 dir = Vector3.zero;
 	int rotationSpeed = 10;
 	int speed = 2;
 	
 	void Update () 
 	{
-		if (!gameController.paused)
+		if (!GUIScript.paused)
 		{
 			// moves the ship
 			transform.Translate(Input.acceleration.x * speed, 0, Input.acceleration.y * speed, Space.World);
@@ -38,18 +36,6 @@ public class playerMovement : MonoBehaviour
 		Vector3 yPos = transform.position;
 		yPos.y = 0;
 		transform.position = yPos;
-
-		// shoots laser
-		if (Input.GetMouseButtonDown(0))
-		{
-			if (!gameController.paused)
-			{
-				Vector3 playerPos = transform.position;
-				Vector3 playerRotation = transform.rotation.eulerAngles;
-				playerRotation = new Vector3 (playerRotation.x, playerRotation.y + 90, playerRotation.z);
-				Instantiate(bullet, playerPos, Quaternion.Euler(playerRotation));
-			}
-		}
 	}
 
 	void OnTriggerEnter(Collider other) 
@@ -59,7 +45,7 @@ public class playerMovement : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 			Destroy(gameObject);
-			gameController.playerDead = true;
+			GUIScript.playerDead = true;
 		}
 	}
 }
