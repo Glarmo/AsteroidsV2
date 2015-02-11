@@ -4,30 +4,56 @@ using System.Collections;
 public class asteroids : MonoBehaviour 
 {
 	private float rotateSpeed;
+	private float size;
 
-	public Texture skin1;
-	public Texture skin2;
-	public Texture skin3;
+	public Texture whiteAsteroid;
+	public Texture redAsteroid;
+	public Texture greenAsteroid;
+	public Texture yellowAsteroid;
+	public Texture blueAsteroid;
+
 	public GameObject childAsteroid;
+
+	private bool whiteCollison;
+	private bool redCollison;
+	private bool greenCollison;
+	private bool yellowCollison;
+	private bool blueCollison;
 
 	void Start ()
 	{
 		// sets the rotate speed to random value
 		rotateSpeed = Random.Range (2f, 5f);
 
-		// selects a random skin of 3
-		int skinSelect = Random.Range (1, 4);
+		size = Random.Range (1f, 10f);
+		transform.localScale = new Vector3 (size, 1, size);
+
+		// selects a random colour
+		int skinSelect = Random.Range (1, 6);
 		if (skinSelect == 1)
 		{
-			renderer.material.mainTexture = skin1;
+			renderer.material.mainTexture = whiteAsteroid;
+			whiteCollison = true;
 		}
 		else if (skinSelect == 2)
 		{
-			renderer.material.mainTexture = skin2;
+			renderer.material.mainTexture = redAsteroid;
+			redCollison = true;
 		}
-		else
+		else if (skinSelect == 3)
 		{
-			renderer.material.mainTexture = skin3;
+			renderer.material.mainTexture = greenAsteroid;
+			greenCollison = true;
+		}
+		else if (skinSelect == 4)
+		{
+			renderer.material.mainTexture = yellowAsteroid;
+			yellowCollison = true;
+		}
+		else if (skinSelect == 5)
+		{
+			renderer.material.mainTexture = blueAsteroid;
+			blueCollison = true;
 		}
 	}
 	void Update ()
@@ -48,6 +74,46 @@ public class asteroids : MonoBehaviour
 		if (other.tag == "Boundary")
 		{
 			Destroy(gameObject);
+		}
+		if (whiteCollison == true)
+		{
+			if (other.tag == "whiteBullet")
+			{
+				Destroy(gameObject);
+				Destroy(other.gameObject);
+			}
+		}
+		if (redCollison == true)
+		{
+			if (other.tag == "redBullet")
+			{
+				Destroy(gameObject);
+				Destroy(other.gameObject);
+			}
+		}
+		if (greenCollison == true)
+		{
+			if (other.tag == "greenBullet")
+			{
+				Destroy(gameObject);
+				Destroy(other.gameObject);
+			}
+		}
+		if (yellowCollison == true)
+		{
+			if (other.tag == "yellowBullet")
+			{
+				Destroy(gameObject);
+				Destroy(other.gameObject);
+			}
+		}
+		if (blueCollison == true)
+		{
+			if (other.tag == "blueBullet")
+			{
+				Destroy(gameObject);
+				Destroy(other.gameObject);
+			}
 		}
 	}
 }

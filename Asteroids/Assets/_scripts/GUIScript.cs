@@ -10,11 +10,13 @@ public class GUIScript : MonoBehaviour
 	public playerShip ship;
 
 	public GUISkin pauseSkin;
+	public GUISkin whiteButton;
 	public GUISkin redButton;
 	public GUISkin greenButton;
 	public GUISkin yellowButton;
 	public GUISkin blueButton;
-	
+
+	public Texture whiteShip;
 	public Texture redShip;
 	public Texture greenShip;
 	public Texture yellowShip;
@@ -59,42 +61,56 @@ public class GUIScript : MonoBehaviour
 				playerDead = false;
 			}
 		}
-		
+
+		GUI.skin = whiteButton;
+		if (GUI.Button (new Rect (10, Screen.height/2 - 145, 50, 50), ""))
+		{
+			ship.changeShipTexture (whiteShip);
+			playerShip.whiteBullet = true;
+			playerShip.redBullet = false;
+			playerShip.greenBullet = false;
+			playerShip.yellowBullet = false;
+			playerShip.blueBullet = false;
+		}
 		GUI.skin = redButton;
-		if (GUI.Button (new Rect (10, Screen.height/2 - 115, 50, 50), ""))
+		if (GUI.Button (new Rect (10, Screen.height/2 - 85, 50, 50), ""))
 		{
 			ship.changeShipTexture (redShip);
-			bullets.redBullet = true;
-			bullets.greenBullet = false;
-			bullets.yellowBullet = false;
-			bullets.blueBullet = false;
+			playerShip.redBullet = true;
+			playerShip.greenBullet = false;
+			playerShip.yellowBullet = false;
+			playerShip.blueBullet = false;
+			playerShip.whiteBullet = false;
 		}
 		GUI.skin = greenButton;
-		if (GUI.Button (new Rect (10, Screen.height/2 - 55, 50, 50), ""))
+		if (GUI.Button (new Rect (10, Screen.height/2 - 25, 50, 50), ""))
 		{
 			ship.changeShipTexture (greenShip);
-			bullets.greenBullet = true;
-			bullets.redBullet = false;
-			bullets.yellowBullet = false;
-			bullets.blueBullet = false;
+			playerShip.greenBullet = true;
+			playerShip.redBullet = false;
+			playerShip.yellowBullet = false;
+			playerShip.blueBullet = false;
+			playerShip.whiteBullet = false;
 		}
 		GUI.skin = yellowButton;
-		if (GUI.Button (new Rect (10, Screen.height/2 + 5, 50, 50), ""))
+		if (GUI.Button (new Rect (10, Screen.height/2 + 35, 50, 50), ""))
 		{
 			ship.changeShipTexture (yellowShip);
-			bullets.yellowBullet = true;
-			bullets.redBullet = false;
-			bullets.greenBullet = false;
-			bullets.blueBullet = false;
+			playerShip.yellowBullet = true;
+			playerShip.redBullet = false;
+			playerShip.greenBullet = false;
+			playerShip.blueBullet = false;
+			playerShip.whiteBullet = false;
 		}
 		GUI.skin = blueButton;
-		if (GUI.Button (new Rect (10, Screen.height/2 + 65, 50, 50), ""))
+		if (GUI.Button (new Rect (10, Screen.height/2 + 95, 50, 50), ""))
 		{
 			ship.changeShipTexture (blueShip);
-			bullets.blueBullet = true;
-			bullets.redBullet = false;
-			bullets.yellowBullet = false;
-			bullets.greenBullet = false;
+			playerShip.blueBullet = true;
+			playerShip.redBullet = false;
+			playerShip.yellowBullet = false;
+			playerShip.greenBullet = false;
+			playerShip.whiteBullet = false;
 		}
 		
 		// displays pause button

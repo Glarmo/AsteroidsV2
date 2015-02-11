@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerMovement : MonoBehaviour 
+public class playerMovement : playerShip
 {
 	Vector3 dir = Vector3.zero;
 	int rotationSpeed = 10;
@@ -46,6 +46,11 @@ public class playerMovement : MonoBehaviour
 			Destroy(other.gameObject);
 			Destroy(gameObject);
 			GUIScript.playerDead = true;
+			playerShip.whiteBullet = true;
+			playerShip.redBullet = false;
+			playerShip.greenBullet = false;
+			playerShip.yellowBullet = false;
+			playerShip.blueBullet = false;
 		}
 	}
 }

@@ -4,11 +4,14 @@ using System.Collections;
 public class playerShip : MonoBehaviour 
 {
 	public GameObject bullet;
+	public static bool redBullet;
+	public static bool greenBullet;
+	public static bool yellowBullet;
+	public static bool blueBullet;
+	public static bool whiteBullet = true;
 
 	void Update () 
 	{
-		// switchs colour
-
 		// shoots laser
 		if (Input.GetMouseButtonDown(0))
 		{

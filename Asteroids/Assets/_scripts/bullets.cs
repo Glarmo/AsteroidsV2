@@ -3,12 +3,34 @@ using System.Collections;
 
 public class bullets : MonoBehaviour 
 {
-	public static bool redBullet;
-	public static bool greenBullet;
-	public static bool yellowBullet;
-	public static bool blueBullet;
-	public static bool whiteBullet;
-
+	void Start ()
+	{
+		if (playerShip.whiteBullet == true)
+		{
+			gameObject.tag = "whiteBullet";
+			gameObject.renderer.material.color = Color.white;
+		}
+		else if (playerShip.redBullet == true)
+		{
+			gameObject.tag = "redBullet";
+			gameObject.renderer.material.color = Color.red;
+		}
+		else if (playerShip.greenBullet == true)
+		{
+			gameObject.tag = "greenBullet";
+			gameObject.renderer.material.color = Color.green;
+		}
+		else if (playerShip.yellowBullet == true)
+		{
+			gameObject.tag = "yellowBullet";
+			gameObject.renderer.material.color = Color.yellow;
+		}
+		else if (playerShip.blueBullet == true)
+		{
+			gameObject.tag = "blueBullet";
+			gameObject.renderer.material.color = Color.blue;
+		}
+	}
 	void Update () 
 	{
 		// moves the bullet forward
@@ -21,10 +43,10 @@ public class bullets : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
 		if (other.tag == "Hazard")
 		{
 			Destroy(gameObject);
-			Destroy(other.gameObject);
 		}
 	}
 }
