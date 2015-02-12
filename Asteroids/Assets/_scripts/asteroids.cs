@@ -75,44 +75,62 @@ public class asteroids : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-		if (whiteCollison == true)
+		else
 		{
-			if (other.tag == "whiteBullet")
+			if (whiteCollison == true)
 			{
-				Destroy(gameObject);
-				Destroy(other.gameObject);
+				if (other.tag == "whiteBullet")
+				{
+					Destroy(gameObject);
+				}
+				else
+				{
+					Destroy(other.gameObject);
+				}
 			}
-		}
-		if (redCollison == true)
-		{
-			if (other.tag == "redBullet")
+			if (redCollison == true)
 			{
-				Destroy(gameObject);
-				Destroy(other.gameObject);
+				if (other.tag == "redBullet")
+				{
+					Destroy(gameObject);
+				}
+				else
+				{
+					Destroy(other.gameObject);
+				}
 			}
-		}
-		if (greenCollison == true)
-		{
-			if (other.tag == "greenBullet")
+			if (greenCollison == true)
 			{
-				Destroy(gameObject);
-				Destroy(other.gameObject);
+				if (other.tag == "greenBullet")
+				{
+					Destroy(gameObject);
+				}
+				else
+				{
+					Destroy(other.gameObject);
+				}
 			}
-		}
-		if (yellowCollison == true)
-		{
-			if (other.tag == "yellowBullet")
+			if (yellowCollison == true)
 			{
-				Destroy(gameObject);
-				Destroy(other.gameObject);
+				if (other.tag == "yellowBullet")
+				{
+					Destroy(gameObject);
+				}
+				else
+				{
+					Destroy(other.gameObject);
+				}
 			}
-		}
-		if (blueCollison == true)
-		{
-			if (other.tag == "blueBullet")
+			if (blueCollison == true)
 			{
-				Destroy(gameObject);
-				Destroy(other.gameObject);
+				if (other.tag == "blueBullet")
+				{
+					Destroy(gameObject);
+				}
+				else
+				{
+					Destroy(other.gameObject);
+				}
 			}
 		}
 	}

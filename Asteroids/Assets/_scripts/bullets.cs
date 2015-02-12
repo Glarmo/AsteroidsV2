@@ -1,35 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bullets : MonoBehaviour 
+public class bullets : playerMovement
+
 {
 	void Start ()
 	{
-		if (playerShip.whiteBullet == true)
-		{
-			gameObject.tag = "whiteBullet";
-			gameObject.renderer.material.color = Color.white;
-		}
-		else if (playerShip.redBullet == true)
-		{
-			gameObject.tag = "redBullet";
-			gameObject.renderer.material.color = Color.red;
-		}
-		else if (playerShip.greenBullet == true)
-		{
-			gameObject.tag = "greenBullet";
-			gameObject.renderer.material.color = Color.green;
-		}
-		else if (playerShip.yellowBullet == true)
-		{
-			gameObject.tag = "yellowBullet";
-			gameObject.renderer.material.color = Color.yellow;
-		}
-		else if (playerShip.blueBullet == true)
-		{
-			gameObject.tag = "blueBullet";
-			gameObject.renderer.material.color = Color.blue;
-		}
+		changeColourTag ();
 	}
 	void Update () 
 	{
@@ -43,10 +20,34 @@ public class bullets : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+	}
 
-		if (other.tag == "Hazard")
+	void changeColourTag ()
+	{
+		if (playerMovement.whiteShip == true)
 		{
-			Destroy(gameObject);
+			gameObject.tag = "whiteBullet";
+			gameObject.renderer.material.color = Color.white;
+		}
+		else if (playerMovement.redShip == true)
+		{
+			gameObject.tag = "redBullet";
+			gameObject.renderer.material.color = Color.red;
+		}
+		else if (playerMovement.greenShip == true)
+		{
+			gameObject.tag = "greenBullet";
+			gameObject.renderer.material.color = Color.green;
+		}
+		else if (playerMovement.yellowShip == true)
+		{
+			gameObject.tag = "yellowBullet";
+			gameObject.renderer.material.color = Color.yellow;
+		}
+		else if (playerMovement.blueShip == true)
+		{
+			gameObject.tag = "blueBullet";
+			gameObject.renderer.material.color = Color.blue;
 		}
 	}
 }

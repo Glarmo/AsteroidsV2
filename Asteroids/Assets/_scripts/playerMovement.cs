@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerMovement : playerShip
+public class playerMovement : MonoBehaviour
 {
+	public static bool redShip;
+	public static bool greenShip;
+	public static bool yellowShip;
+	public static bool blueShip;
+	public static bool whiteShip = true;
+	
 	Vector3 dir = Vector3.zero;
 	int rotationSpeed = 10;
 	int speed = 2;
@@ -38,19 +44,8 @@ public class playerMovement : playerShip
 		transform.position = yPos;
 	}
 
-	void OnTriggerEnter(Collider other) 
+	public void changeShipTexture (Texture texture)
 	{
-		// destroys ship if it hits a hazard
-		if (other.tag == "Hazard")
-		{
-			Destroy(other.gameObject);
-			Destroy(gameObject);
-			GUIScript.playerDead = true;
-			playerShip.whiteBullet = true;
-			playerShip.redBullet = false;
-			playerShip.greenBullet = false;
-			playerShip.yellowBullet = false;
-			playerShip.blueBullet = false;
-		}
+		renderer.material.mainTexture = texture;
 	}
 }

@@ -1,14 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerShip : MonoBehaviour 
+public class playerShipShooting : playerMovement
 {
 	public GameObject bullet;
-	public static bool redBullet;
-	public static bool greenBullet;
-	public static bool yellowBullet;
-	public static bool blueBullet;
-	public static bool whiteBullet = true;
 
 	void Update () 
 	{
@@ -25,10 +20,19 @@ public class playerShip : MonoBehaviour
 		}
 	}
 
-
-
-	public void changeShipTexture (Texture texture)
+	
+	void OnTriggerEnter(Collider other) 
 	{
-		renderer.material.mainTexture = texture;
+		// destroys ship if it hits a hazard
+		if (other.tag == "Hazard")
+		{
+			Destroy(gameObject);
+			GUIScript.playerDead = true;
+			playerMovement.whiteShip = true;
+			playerMovement.redShip = true;
+			playerMovement.greenShip = false;
+			playerMovement.yellowShip = false;
+			playerMovement.blueShip = false;
+		}
 	}
 }
