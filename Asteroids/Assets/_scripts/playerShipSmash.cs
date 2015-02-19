@@ -3,14 +3,14 @@ using System.Collections;
 
 public class playerShipSmash : playerMovement 
 {
+	void Start()
+	{
+		gameObject.tag = "whiteBullet";
+	}
+
 	void Update ()
 	{
 		changeTag ();
-	}
-
-	void OnTriggerEnter (Collider other)
-	{
-		 
 	}
 
 	void changeTag ()
@@ -22,10 +22,6 @@ public class playerShipSmash : playerMovement
 		else if (playerMovement.redShip == true)
 		{
 			gameObject.tag = "redBullet";
-		}
-		else if (playerMovement.greenShip == true)
-		{
-			gameObject.tag = "greenBullet";
 		}
 		else if (playerMovement.yellowShip == true)
 		{

@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: a3ea65be06ae1ec458233092d4334049
+guid: 00ffd2ab507871c48bb0019adaae6874
 TextureImporter:
   fileIDToRecycleName:
-    21300000: AsteroidGreen
+    21300000: button
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

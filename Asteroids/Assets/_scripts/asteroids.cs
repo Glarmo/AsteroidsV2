@@ -8,15 +8,13 @@ public class asteroids : MonoBehaviour
 
 	public Texture whiteAsteroid;
 	public Texture redAsteroid;
-	public Texture greenAsteroid;
 	public Texture yellowAsteroid;
 	public Texture blueAsteroid;
 
-	public GameObject childAsteroid;
+	public GameObject particleDeathEffect;
 
 	private bool whiteCollison;
 	private bool redCollison;
-	private bool greenCollison;
 	private bool yellowCollison;
 	private bool blueCollison;
 
@@ -29,8 +27,8 @@ public class asteroids : MonoBehaviour
 		transform.localScale = new Vector3 (size, 1, size);
 
 		// selects a random colour
-		int skinSelect = Random.Range (1, 6);
-		if (skinSelect == 1)
+		int skinSelect = Random.Range (1, 5);
+		if (skinSelect == 1 || gameModeSelectGUI.level == "level3")
 		{
 			renderer.material.mainTexture = whiteAsteroid;
 			whiteCollison = true;
@@ -42,15 +40,10 @@ public class asteroids : MonoBehaviour
 		}
 		else if (skinSelect == 3)
 		{
-			renderer.material.mainTexture = greenAsteroid;
-			greenCollison = true;
-		}
-		else if (skinSelect == 4)
-		{
 			renderer.material.mainTexture = yellowAsteroid;
 			yellowCollison = true;
 		}
-		else if (skinSelect == 5)
+		else if (skinSelect == 4)
 		{
 			renderer.material.mainTexture = blueAsteroid;
 			blueCollison = true;
@@ -82,10 +75,12 @@ public class asteroids : MonoBehaviour
 				if (other.tag == "whiteBullet")
 				{
 					Destroy(gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 				else
 				{
 					Destroy(other.gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 			}
 			if (redCollison == true)
@@ -93,21 +88,12 @@ public class asteroids : MonoBehaviour
 				if (other.tag == "redBullet")
 				{
 					Destroy(gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 				else
 				{
 					Destroy(other.gameObject);
-				}
-			}
-			if (greenCollison == true)
-			{
-				if (other.tag == "greenBullet")
-				{
-					Destroy(gameObject);
-				}
-				else
-				{
-					Destroy(other.gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 			}
 			if (yellowCollison == true)
@@ -115,10 +101,12 @@ public class asteroids : MonoBehaviour
 				if (other.tag == "yellowBullet")
 				{
 					Destroy(gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 				else
 				{
 					Destroy(other.gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 			}
 			if (blueCollison == true)
@@ -126,10 +114,12 @@ public class asteroids : MonoBehaviour
 				if (other.tag == "blueBullet")
 				{
 					Destroy(gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 				else
 				{
 					Destroy(other.gameObject);
+					Instantiate (particleDeathEffect, transform.position, transform.rotation);
 				}
 			}
 		}

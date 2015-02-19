@@ -4,7 +4,6 @@ using System.Collections;
 public class playerMovement : MonoBehaviour
 {
 	public static bool redShip;
-	public static bool greenShip;
 	public static bool yellowShip;
 	public static bool blueShip;
 	public static bool whiteShip = true;

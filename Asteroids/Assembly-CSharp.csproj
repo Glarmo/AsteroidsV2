@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_scripts\EnemyBullet.cs" />
+     <Compile Include="Assets\_scripts\EnemyShip.cs" />
      <Compile Include="Assets\_scripts\GUIScript.cs" />
      <Compile Include="Assets\_scripts\asteroids.cs" />
      <Compile Include="Assets\_scripts\bullets.cs" />

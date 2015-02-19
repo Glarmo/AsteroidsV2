@@ -34,11 +34,6 @@ public class bullets : playerMovement
 			gameObject.tag = "redBullet";
 			gameObject.renderer.material.color = Color.red;
 		}
-		else if (playerMovement.greenShip == true)
-		{
-			gameObject.tag = "greenBullet";
-			gameObject.renderer.material.color = Color.green;
-		}
 		else if (playerMovement.yellowShip == true)
 		{
 			gameObject.tag = "yellowBullet";
@@ -47,7 +42,7 @@ public class bullets : playerMovement
 		else if (playerMovement.blueShip == true)
 		{
 			gameObject.tag = "blueBullet";
-			gameObject.renderer.material.color = Color.blue;
+			gameObject.renderer.material.color = Color.cyan;
 		}
 	}
 }

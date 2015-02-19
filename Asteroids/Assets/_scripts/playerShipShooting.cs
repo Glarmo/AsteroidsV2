@@ -27,12 +27,6 @@ public class playerShipShooting : playerMovement
 		if (other.tag == "Hazard")
 		{
 			Destroy(gameObject);
-			GUIScript.playerDead = true;
-			playerMovement.whiteShip = true;
-			playerMovement.redShip = true;
-			playerMovement.greenShip = false;
-			playerMovement.yellowShip = false;
-			playerMovement.blueShip = false;
 		}
 	}
 }

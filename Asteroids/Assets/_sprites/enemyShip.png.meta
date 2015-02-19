@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 9b67c9b830ab64dd0b0fb645d687286e
+guid: d63570ff661855445bd5722ed72a3f2d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PlayerShipGreen
+    21300000: enemyShip
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,13 +22,13 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 4096
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
