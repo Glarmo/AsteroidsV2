@@ -7,9 +7,12 @@ public class playerMovement : MonoBehaviour
 	public static bool yellowShip;
 	public static bool blueShip;
 	public static bool whiteShip = true;
+
+	public static float xSetValue;
+	public static float ySetValue;
 	
 	Vector3 dir = Vector3.zero;
-	int rotationSpeed = 10;
+	int rotationSpeed = 100;
 	int speed = 2;
 	
 	void Update () 
@@ -17,11 +20,11 @@ public class playerMovement : MonoBehaviour
 		if (!GUIScript.paused)
 		{
 			// moves the ship
-			transform.Translate(Input.acceleration.x * speed, 0, Input.acceleration.y * speed, Space.World);
+			transform.Translate((Input.acceleration.x - xSetValue) * speed, 0, (Input.acceleration.y - ySetValue) * speed, Space.World);
 
 			// rotates the ship
-			dir.x = -Input.acceleration.y;
-			dir.z = Input.acceleration.x;
+			dir.x = -Input.acceleration.y + ySetValue;
+			dir.z = Input.acceleration.x - xSetValue;
 
 			if (dir != Vector3.zero) {
 				transform.rotation = Quaternion.Slerp(
@@ -33,6 +36,7 @@ public class playerMovement : MonoBehaviour
 			
 			transform.Rotate(Vector3.forward * Input.acceleration.y * 5.0f);
 		}
+
 		// limits the ship to sceen space
 		Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
 		pos.x = Mathf.Clamp01 (pos.x);

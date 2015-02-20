@@ -66,6 +66,16 @@ public class GUIScript : MonoBehaviour
 				playerDead = false;
 				currentWave = 0;
 			}
+			if (GUI.Button (new Rect (Screen.width/2 - 100, Screen.height/2 + 150, 200, 100), "QUIT"))
+			{
+				Application.LoadLevel ("mainMenu");
+				playerDead = false;
+				Time.timeScale = 1;
+				playerMovement.whiteShip = true;
+				playerMovement.redShip = false;
+				playerMovement.yellowShip = false;
+				playerMovement.blueShip = false;
+			}
 		}
 
 		// displays colour change buttons if in suitable gamemode
@@ -111,34 +121,42 @@ public class GUIScript : MonoBehaviour
 
 		// displays pause button
 		GUI.skin = pauseSkin;
-		paused = GUI.Toggle (new Rect (10, Screen.height - 50, 40, 40), paused, "");
-		if (paused == true)
+		if (GUI.Button (new Rect (10, Screen.height - 50, 40, 40), ""))
 		{
-			if (Time.timeScale == 0)
+			if (paused == true)
 			{
+				paused = false;
 				Time.timeScale = 1;
 			}
 			else
 			{
-				GUI.skin = retryButton;
-				GUI.Label (new Rect (Screen.width/2 - 100, Screen.height/2 - 80, 200, 100), "PAUSED");
-				if (GUI.Button (new Rect (Screen.width/2 - 100, Screen.height/2, 200, 100), "RETRY"))
-				{
-					Application.LoadLevel (gameModeSelectGUI.level);
-					playerMovement.whiteShip = true;
-					playerMovement.redShip = false;
-					playerMovement.yellowShip = false;
-					playerMovement.blueShip = false;
-				}
-				if (GUI.Button (new Rect (Screen.width/2 - 100, Screen.height/2 + 150, 200, 100), "QUIT"))
-				{
-					Application.LoadLevel ("mainMenu");
-					playerMovement.whiteShip = true;
-					playerMovement.redShip = false;
-					playerMovement.yellowShip = false;
-					playerMovement.blueShip = false;
-				}
-				Time.timeScale = 0;
+				paused = true;
+			}
+		}
+		if (paused == true)
+		{
+			Time.timeScale = 0;
+			GUI.skin = retryButton;
+			GUI.Label (new Rect (Screen.width/2 - 100, Screen.height/2 - 80, 200, 100), "PAUSED");
+			if (GUI.Button (new Rect (Screen.width/2 - 100, Screen.height/2, 200, 100), "RETRY"))
+			{
+				Application.LoadLevel (gameModeSelectGUI.level);
+				paused = false;
+				Time.timeScale = 1;
+				playerMovement.whiteShip = true;
+				playerMovement.redShip = false;
+				playerMovement.yellowShip = false;
+				playerMovement.blueShip = false;
+			}
+			if (GUI.Button (new Rect (Screen.width/2 - 100, Screen.height/2 + 150, 200, 100), "QUIT"))
+			{
+				Application.LoadLevel ("mainMenu");
+				paused = false;
+				Time.timeScale = 1;
+				playerMovement.whiteShip = true;
+				playerMovement.redShip = false;
+				playerMovement.yellowShip = false;
+				playerMovement.blueShip = false;
 			}
 		}
 	}
