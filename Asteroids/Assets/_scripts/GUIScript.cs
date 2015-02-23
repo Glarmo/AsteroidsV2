@@ -3,7 +3,6 @@ using System.Collections;
 
 public class GUIScript : MonoBehaviour 
 {
-	public static bool playerDead;
 	public static bool paused;
 	public static int currentWave;
 
@@ -23,18 +22,6 @@ public class GUIScript : MonoBehaviour
 	
 	private int waveSurvived;
 
-	void Update ()
-	{
-		if (GameObject.Find("Player") == null)
-		{
-			playerDead = true;
-			playerMovement.whiteShip = true;
-			playerMovement.redShip = true;
-			playerMovement.yellowShip = false;
-			playerMovement.blueShip = false;
-		}
-	}
-
 	void OnGUI ()
 	{
 		// displays wave counter
@@ -42,8 +29,12 @@ public class GUIScript : MonoBehaviour
 		GUI.Label (new Rect (20, 20, 170, 20), "WAVE: " + currentWave);
 		
 		// displays retry + how long player survived
-		if (playerDead == true)
+		if (GameObject.Find("Player") == null)
 		{
+			playerMovement.whiteShip = true;
+			playerMovement.redShip = false;
+			playerMovement.yellowShip = false;
+			playerMovement.blueShip = false;
 			waveSurvived = currentWave;
 			GUI.skin = retryButton;
 			storeHighscore (currentWave);
@@ -63,13 +54,11 @@ public class GUIScript : MonoBehaviour
 			if (GUI.Button (new Rect (Screen.width/2 - 100, Screen.height/2, 200, 100), "RETRY"))
 			{
 				Application.LoadLevel (gameModeSelectGUI.level);
-				playerDead = false;
 				currentWave = 0;
 			}
 			if (GUI.Button (new Rect (Screen.width/2 - 100, Screen.height/2 + 150, 200, 100), "QUIT"))
 			{
 				Application.LoadLevel ("mainMenu");
-				playerDead = false;
 				Time.timeScale = 1;
 				playerMovement.whiteShip = true;
 				playerMovement.redShip = false;
@@ -82,7 +71,7 @@ public class GUIScript : MonoBehaviour
 		if (gameModeSelectGUI.level != "level3")
 		{
 			GUI.skin = whiteButton;
-			if (GUI.Button (new Rect (Screen.width - 50, 0, 50, Screen.height / 4), ""))
+			if (GUI.Button (new Rect (Screen.width - 100, 0, 100, Screen.height / 4), ""))
 			{
 				ship.changeShipTexture (whiteShip);
 				playerMovement.whiteShip = true;
@@ -91,7 +80,7 @@ public class GUIScript : MonoBehaviour
 				playerMovement.blueShip = false;
 			}
 			GUI.skin = redButton;
-			if (GUI.Button (new Rect (Screen.width - 50, Screen.height / 4, 50, Screen.height / 4), ""))
+			if (GUI.Button (new Rect (Screen.width - 100, Screen.height / 4, 100, Screen.height / 4), ""))
 			{
 				ship.changeShipTexture (redShip);
 				playerMovement.whiteShip = false;
@@ -100,7 +89,7 @@ public class GUIScript : MonoBehaviour
 				playerMovement.blueShip = false;
 			}
 			GUI.skin = yellowButton;
-			if (GUI.Button (new Rect (Screen.width - 50, Screen.height / 2, 50, Screen.height / 4), ""))
+			if (GUI.Button (new Rect (Screen.width - 100, Screen.height / 2, 100, Screen.height / 4), ""))
 			{
 				ship.changeShipTexture (yellowShip);
 				playerMovement.whiteShip = false;
@@ -109,7 +98,7 @@ public class GUIScript : MonoBehaviour
 				playerMovement.blueShip = false;
 			}
 			GUI.skin = blueButton;
-			if (GUI.Button (new Rect (Screen.width - 50, Screen.height/4 * 3, 50, Screen.height / 4), ""))
+			if (GUI.Button (new Rect (Screen.width - 100, Screen.height/4 * 3, 100, Screen.height / 4), ""))
 			{
 				ship.changeShipTexture (blueShip);
 				playerMovement.whiteShip = false;

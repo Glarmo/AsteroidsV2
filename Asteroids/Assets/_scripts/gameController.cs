@@ -19,7 +19,7 @@ public class gameController : MonoBehaviour
 	void Start ()
 	{
 		// initialises values for when player replays
-		hazardCount = 10;
+		hazardCount = 5;
 		spawnWait = 1;
 		if (gameModeSelectGUI.level == "level1" || gameModeSelectGUI.level == "level2")
 		{
@@ -72,10 +72,10 @@ public class gameController : MonoBehaviour
 				yield return new WaitForSeconds (spawnWait);
 			}
 			yield return new WaitForSeconds (waveWait);
-			if (GUIScript.playerDead != true)
+			if (GameObject.Find("Player") != null)
 			{	
 				GUIScript.currentWave++;
-				hazardCount += 5;
+				hazardCount += 2;
 				spawnWait -= 0.1f;
 				if (spawnWait == 0.3f)
 				{
@@ -139,10 +139,10 @@ public class gameController : MonoBehaviour
 				yield return new WaitForSeconds (spawnWait);
 			}
 			yield return new WaitForSeconds (waveWait);
-			if (GUIScript.playerDead != true)
+			if (GameObject.Find("Player") != null)
 			{	
 				GUIScript.currentWave++;
-				hazardCount += 5;
+				hazardCount += 2;
 				spawnWait -= 0.1f;
 				if (spawnWait == 0.3f)
 				{

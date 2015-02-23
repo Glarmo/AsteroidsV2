@@ -23,7 +23,7 @@ public class asteroids : MonoBehaviour
 		// sets the rotate speed to random value
 		rotateSpeed = Random.Range (2f, 5f);
 
-		size = Random.Range (1f, 10f);
+		size = Random.Range (3f, 10f);
 		transform.localScale = new Vector3 (size, 1, size);
 
 		// selects a random colour

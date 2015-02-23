@@ -9,6 +9,7 @@ public class EnemyShip : MonoBehaviour
 	GameObject playerShip;
 	int startWait = 1;
 	int bulletWait = 2;
+	bool visible = true;
 
 	void Start()
 	{
@@ -36,10 +37,16 @@ public class EnemyShip : MonoBehaviour
 		}
 	}
 
+	// if ship off screen then will stop shooting
+	void OnBecameInvisible() 
+	{
+		visible = false;
+	}
+
 	IEnumerator EnemyShoot (GameObject projectile)
 	{
 		yield return new WaitForSeconds (startWait);
-		while (true)
+		while (visible)
 		{
 			Instantiate (projectile, transform.position, transform.rotation);
 			yield return new WaitForSeconds (bulletWait);
