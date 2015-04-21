@@ -6,6 +6,7 @@ public class asteroids : MonoBehaviour
 	private float rotateSpeed;
 	private float size;
 
+	/*!* comment1 */
 	public Texture whiteAsteroid;
 	public Texture redAsteroid;
 	public Texture yellowAsteroid;
@@ -15,14 +16,16 @@ public class asteroids : MonoBehaviour
 
 	private bool whiteCollison;
 	private bool redCollison;
+	/*!* comment2 */
 	private bool yellowCollison;
 	private bool blueCollison;
 
+	/*!* comment3 */
 	void Start ()
 	{
 		// sets the rotate speed to random value
 		rotateSpeed = Random.Range (2f, 5f);
-
+		/*!* comment4 */
 		size = Random.Range (3f, 10f);
 		transform.localScale = new Vector3 (size, 1, size);
 

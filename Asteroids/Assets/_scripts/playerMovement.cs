@@ -26,15 +26,10 @@ public class playerMovement : MonoBehaviour
 			dir.x = -Input.acceleration.y + ySetValue;
 			dir.z = Input.acceleration.x - xSetValue;
 
-			if (dir != Vector3.zero) {
-				transform.rotation = Quaternion.Slerp(
-					transform.rotation,
-					Quaternion.LookRotation(dir),
-					Time.deltaTime * rotationSpeed
-					);
+			if (dir != Vector3.zero) 
+			{
+				transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(dir),Time.deltaTime * rotationSpeed);
 			}
-			
-			transform.Rotate(Vector3.forward * Input.acceleration.y * 5.0f);
 		}
 
 		// limits the ship to sceen space
