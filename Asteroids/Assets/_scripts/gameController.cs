@@ -19,6 +19,7 @@ public class gameController : MonoBehaviour
 	void Start ()
 	{
 		// initialises values for when player replays
+		GUIScript.currentWave = 0;
 		hazardCount = 5;
 		spawnWait = 1;
 		if (gameModeSelectGUI.level == "level1" || gameModeSelectGUI.level == "level2")
