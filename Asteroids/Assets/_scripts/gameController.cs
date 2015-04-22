@@ -28,7 +28,7 @@ public class gameController : MonoBehaviour
 		}
 		if (gameModeSelectGUI.level == "level3")
 		{
-			//StartCoroutine (spawnMultipleEnemyTypesStraight (hazard, enemyShip));
+			StartCoroutine (spawnMultipleEnemyTypesStraight (hazard, enemyShip));
 		}
 	}	
 

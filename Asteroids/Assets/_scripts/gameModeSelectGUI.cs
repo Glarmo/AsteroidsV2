@@ -13,6 +13,7 @@ public class gameModeSelectGUI : MonoBehaviour
 	void OnGUI ()
 	{
 		GUI.skin = setNeutralPos;
+		GUI.Label (new Rect (Screen.width / 2 - 450, Screen.height / 2 - 125, 250, 100), "Neutral Position");
 		if (GUI.Button (new Rect (Screen.width / 2 - 300, Screen.height / 2 - 50, 100, 100), "SET"))
 		{
 			playerMovement.xSetValue = Input.acceleration.x;
